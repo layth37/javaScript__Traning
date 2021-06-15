@@ -1,0 +1,110 @@
+const list = document.querySelector('.output ul');
+list.innerHTML = '';
+let greetings = ['Happy Birthday!',
+                 'Merry Christmas my love',
+                 'A happy Christmas to all the family',
+                 'You\'re all I want for Christmas',
+                 'Get well soon'];
+
+for (let i = 0; i < greetings.length; i++) {
+  let input = greetings[i];
+  if (greetings[i].indexOf('Christmas') !== -1) {
+    let result = input;
+    let listItem = document.createElement('li');
+    listItem.textContent = result;
+    list.appendChild(listItem);
+  }
+}
+
+
+const list = document.querySelector('.output ul');
+list.innerHTML = '';
+let cities = ['lonDon', 'ManCHESTer', 'BiRmiNGHAM', 'liVERpoOL'];
+
+for (let i = 0; i < cities.length; i++) {
+  let input = cities[i];
+  let lower = input.toLowerCase();
+  let firstLetter = lower.slice(0,1);
+  let capitalized = lower.replace(firstLetter,firstLetter.toUpperCase());
+  let result = capitalized;
+  let listItem = document.createElement('li');
+  listItem.textContent = result;
+  list.appendChild(listItem);
+
+}
+
+
+const list = document.querySelector('.output ul');
+list.innerHTML = '';
+let stations = ['MAN675847583748sjt567654;Manchester Piccadilly',
+                'GNF576746573fhdg4737dh4;Greenfield',
+                'LIV5hg65hd737456236dch46dg4;Liverpool Lime Street',
+                'SYB4f65hf75f736463;Stalybridge',
+                'HUD5767ghtyfyr4536dh45dg45dg3;Huddersfield'];
+
+for (let i = 0; i < stations.length; i++) {
+  let input = stations[i];
+  let code = input.slice(0,3);
+  let semiC = input.indexOf(';');
+  let name = input.slice(semiC + 1);
+  let result = code + ': ' + name;
+  let listItem = document.createElement('li');
+  listItem.textContent = result;
+  list.appendChild(listItem);
+}
+
+
+const totalBox = document.querySelector('.output p');
+let total = 0;
+list.innerHTML = '';
+totalBox.textContent = '';
+
+let products = ['Underpants:6.99',
+  'Socks:5.99',
+  'T-shirt:14.99',
+  'Trousers:31.99',
+  'Shoes:23.99'];
+
+for(let i = 0; i < products.length; i++) {
+  let subArray = products[i].split(':');
+  let name = subArray[0];
+  let price = Number(subArray[1]);
+  total += price;
+  let itemText = name + ' — $' + price;
+
+  let listItem = document.createElement('li');
+  listItem.textContent = itemText;
+  list.appendChild(listItem);
+}
+
+totalBox.textContent = 'Total: $' + total.toFixed(2);
+
+const list = document.querySelector('.output ul');
+const searchInput = document.querySelector('.output input');
+const searchBtn = document.querySelector('.output button');
+
+list.innerHTML = '';
+
+let myHistory= [];
+
+searchBtn.onclick = function() {
+ if(searchInput.value !== '') {
+ myHistory.unshift(searchInput.value);
+
+ list.innerHTML = '';
+
+ for(let i = 0; i < myHistory.length; i++) {
+ itemText = myHistory[i];
+ const listItem = document.createElement('li');
+ listItem.textContent = itemText;
+ list.appendChild(listItem);
+ }
+
+ if(myHistory.length >= 5) {
+ myHistory.pop();
+ }
+
+ searchInput.value = '';
+ searchInput.focus();
+ }
+}
